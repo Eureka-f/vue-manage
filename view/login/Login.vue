@@ -73,7 +73,7 @@ export default {
   methods: {
     loginSubmit() {
       getMenu(this.form).then(({ data: res }) => {
-        console.log(res);
+        // console.log(res);
         if (res.code === 20000) {
           this.$store.commit("clearMenu");
           this.$store.commit("setMenu", res.data.menu);

@@ -56,7 +56,6 @@ export default {
           menuArray.push(...item.children)
         } else {
           item.component = () => import(`../view/${item.url}`)
-
           menuArray.push(item)
         }
       });

@@ -1,9 +1,9 @@
 import Mock from "mockjs";
 export default {
   getMenu: config => {
-    console.log(config);
+    // console.log(config);
     const { username, password } = JSON.parse(config.body)
-    console.log(JSON.parse(config.body));
+    // console.log(JSON.parse(config.body));
 
     if (username === 'admin' && password === 'admin') {
       return {

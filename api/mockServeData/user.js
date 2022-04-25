@@ -26,9 +26,9 @@ export default {
   //获取用户数据
   getUserList: config => {
     const { name, page = 1, limit = 20 } = param2Obj(config.url);
-    console.log(config.url);
-    console.log(param2Obj(config.url));
-    console.log('name:' + name, 'page:' + page, "分页limit" + limit);
+    // console.log(config.url);
+    // console.log(param2Obj(config.url));
+    // console.log('name:' + name, 'page:' + page, "分页limit" + limit);
     const mockList = List.filter(user => {
       if (name && user.name.indexOf(name) === -1 && user.addr.indexOf(name) === -1) return false
       return true
@@ -88,9 +88,10 @@ export default {
     }
   },
 
-  //删除用户
+  // 删除用户
   deleteUser: config => {
-    const { id } = param2Obj(config.url)
+    // const { id } = param2Obj(config.url)
+    const id = config.body
     if (!id) {
       return {
         code: -999,
@@ -104,6 +105,7 @@ export default {
       }
     }
   }
+
 
 
 }

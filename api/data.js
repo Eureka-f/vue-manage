@@ -21,3 +21,11 @@ export const getUserData = (params) => {
     params
   })
 }
+
+export const getMallData = (params) => {
+  return axios.request({
+    url: '/mall/getMallData',
+    method: 'get',
+    params
+  })
+}

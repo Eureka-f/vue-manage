@@ -8,6 +8,7 @@
         @click="handleMenu"
       ></el-button>
       <!-- <h3 style="color: #fff">首页</h3> -->
+
       <!-- 面包屑 -->
       <div class="breadcrumb">
         <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -22,11 +23,11 @@
     </div>
 
     <div class="r-content">
-      <el-dropdown>
+      <el-dropdown trigger="click">
         <span>
           <img class="userimg" :src="imgsrc" alt="" />
         </span>
-        <el-dropdown-menu slot="dropdown" trigger="click" size="mini">
+        <el-dropdown-menu slot="dropdown" size="mini">
           <el-dropdown-item>个人信息</el-dropdown-item>
           <el-dropdown-item @click.native="logout">退出</el-dropdown-item>
         </el-dropdown-menu>

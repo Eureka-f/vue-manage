@@ -75,6 +75,7 @@
 </template>
 
 <script>
+import { List } from "echarts";
 import { getData } from "../../api/data.js";
 // import * as echarts from "echarts";
 import Echarts from "../../src/components/Echarts.vue";
@@ -177,17 +178,37 @@ export default {
       const { code, data } = res.data;
       if (code == 20000) {
         this.tableData = data.tableData;
-        const order = data.orderData;
-        const XData = order.date;
-        const keyArray = Object.keys(order.data[0]);
+        const order = data.orderData.list;
+
+        let XData = [];
         const series = [];
-        keyArray.forEach((key) => {
+        const series_n = ["苹果", "三星", "oppo", "vivo", "魅族", "小米"];
+        let date = [];
+        series_n.forEach((name) => {
+          let series_d = order.filter((item) => item.name === name);
+          let count = [];
+          series_d.forEach((c) => {
+            count.push(c.count);
+            date.push(c.date);
+          });
           series.push({
-            name: key,
-            data: order.data.map((item) => item[key]),
+            name: name,
+            data: count,
             type: "line",
           });
         });
+        XData = Array.from(new Set(date));
+        XData.sort();
+        console.log(order);
+        console.log(XData);
+        // const keyArray = Object.keys(order.data[0]);
+        // keyArray.forEach((key) => {
+        //   series.push({
+        //     name: key,
+        //     data: order.data.map((item) => item[key]),
+        //     type: "line",
+        //   });
+        // });
 
         // const option = {
         //   xAxis: {
@@ -207,6 +228,7 @@ export default {
         // const E = echarts.init(this.$refs.echarts);
         // E.setOption(option);
         this.echartsData.order.xData = XData;
+
         this.echartsData.order.series = series;
 
         //用户图

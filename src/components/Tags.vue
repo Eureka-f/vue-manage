@@ -1,5 +1,6 @@
 <template>
   <div class="tags">
+    <!-- header下面那一栏 -->
     <el-tag
       size="small"
       v-for="(item, index) in tag"
@@ -31,14 +32,18 @@ export default {
 
     closeItem(item, index) {
       if (this.$route.path !== item.path) {
+        this.deleteMenu(item);
         return;
       }
+      // console.log(index);
+
       let length = this.tag.length - 1;
       if (index === length) {
         this.$router.push(this.tag[index - 1].path);
       } else {
         this.$router.push(this.tag[index + 1].path);
       }
+
       this.deleteMenu(item);
     },
   },
